@@ -15,7 +15,7 @@ const Update = () => {
       .put("http://localhost:5555/update/" + id, { name, email, address })
       .then((res) => {
         console.log(res);
-        navigate("/");
+        navigate("/FacultyMember");
       })
       .catch((err) => console.log(err));
   }

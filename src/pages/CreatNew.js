@@ -14,7 +14,7 @@ function CreatNew() {
       .post("http://localhost:5555/create", { name, email, address })
       .then((res) => {
         console.log(res);
-        navigate("/");
+        navigate("/FacultyMember");
       })
       .catch((err) => console.log(err));
   }

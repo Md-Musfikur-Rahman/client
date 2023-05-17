@@ -1,77 +1,52 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 const Home = () => {
-  const [data, setData] = useState([]);
-
-  const loadData = async () => {
-    const response = await axios.get("http://localhost:5555/get");
-    setData(response.data);
-  };
-
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete("http://localhost:5555/delete/" + id);
-      window.location.reload();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
-    <div className="d-flex vh-100 justify-content-center align-item-center">
-      <div class="w-75 p-4 m-4 m-auto">
-        <table class="table bg-white text-center">
-          <thead class="thead-dark ">
-            <tr>
-              <th scope="col">NO</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Address</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => {
-              return (
-                <tr key={item.id}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{item.name}</td>
-                  <td>{item.email}</td>
-                  <td>{item.address}</td>
-                  <td>
-                    <div class="btn-group">
-                      <Link to={`/update/${item.id}`}>
-                        <button class="btn btn-success">Edit</button>
-                      </Link>
-                      <Link to="/">
-                        <button
-                          class="btn btn-danger"
-                          onClick={(e) => handleDelete(item.id)}
-                        >
-                          Delete
-                        </button>
-                      </Link>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-
-        <div class="text-center mt-2">
-          <Link to="/create">
-            <button class="btn btn-primary">Add New</button>
-          </Link>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-8 offset-md-2 text-center">
+          <h2 className="mt-4">
+            Center of Excellence for Teaching and Learning
+          </h2>
+          <p className="lead">
+            The Center of Excellence for Teaching and Learning (CETL) is a unit
+            of Green University of Bangladesh that is dedicated to providing
+            high-quality teaching and learning resources and support to faculty
+            and students.
+          </p>
+          <h4 className="mt-5">Our Services</h4>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              Professional development workshops for faculty
+            </li>
+            <li className="list-group-item">Instructional design services</li>
+            <li className="list-group-item">Online resources for students</li>
+            <li className="list-group-item">A student learning center</li>
+          </ul>
+          <h4 className="mt-5">Upcoming Events</h4>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              Certificate in Teaching and Learning (CTL) Program: This program
+              is designed to help faculty develop their teaching skills. The
+              program is offered in a blended format, with online modules and
+              in-person workshops.
+            </li>
+            <li className="list-group-item">
+              Instructional Design Workshop: This workshop will teach faculty
+              how to design effective online courses.
+            </li>
+            <li className="list-group-item">
+              Student Learning Center Open House: The Student Learning Center is
+              a resource for students who need help with their studies. The
+              center offers tutoring, workshops, and other services.
+            </li>
+          </ul>
         </div>
       </div>
+      <Link to="/ContactUs">
+        <button className="btn "> Contact Us</button>
+      </Link>
     </div>
   );
 };
