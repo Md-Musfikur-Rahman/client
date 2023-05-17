@@ -1,11 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Home = () => {
   const [data, setData] = useState([]);
-  const navigate = useNavigate();
 
   const loadData = async () => {
     const response = await axios.get("http://localhost:5555/get");
