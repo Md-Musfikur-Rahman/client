@@ -18,6 +18,7 @@ function CreatNew() {
       })
       .catch((err) => console.log(err));
   }
+
   return (
     <div className="d-flex vh-100 justify-content-center align-item-center">
       <div class="w-75 p-4 m-4 m-auto">
